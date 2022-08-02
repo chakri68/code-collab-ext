@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 
+:root {
+  --code-collab-primary-color: white;
+  --code-collab-secondary-color: green;
+  --code-collab-primary-bg: black;
+  --code-collab-secondary-bg: greenyellow;
+  --code-collab-darker-bg: rgba(10, 10, 10, 0.3);
+}
+
 #code-collab {
-  background-color: black;
+  background-color: var(--code-collab-primary-bg);
   padding: 0;
   box-sizing: border-box;
   max-width: 800px;
@@ -32,21 +40,31 @@ iframe#code-frame:hover {
 }
 
 #code-collab-header {
-  font-weight: lighter;
-  font-size: small;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   opacity: 0.5;
   height: 25px;
   transition: opacity 0.5s ease-in, height 0.15s;
-  background-color: greenyellow;
-  color: #141414;
+  background-color: var(--code-collab-secondary-bg);
 }
 
 #code-collab-header:hover {
   cursor: move;
   height: 30px;
   opacity: 1;
+}
+
+.invis-link {
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 2px 3px;
+  transition: background-color 0.25s ease-in-out, color 0.2s ease-in-out;
+}
+.invis-link:hover {
+  background-color: inherit;
+  text-decoration: none;
+  color: var(--code-collab-primary-color);
+  background-color: var(--code-collab-darker-bg);
 }
 
 /* STYLES FROM BULMA CSS */
@@ -60,7 +78,7 @@ iframe#code-frame:hover {
   user-select: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  background-color: rgba(10, 10, 10, 0.2);
+  background-color: inherit;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -78,13 +96,14 @@ iframe#code-frame:hover {
   position: relative;
   vertical-align: top;
   width: 20px;
+  transition: background-color 0.25s ease-in-out, color 0.2s ease-in-out;
 }
 
 .delete::before,
 .modal-close::before,
 .delete::after,
 .modal-close::after {
-  background-color: white;
+  background-color: var(--code-collab-secondary-color);
   content: "";
   display: block;
   left: 50%;
@@ -116,6 +135,11 @@ iframe#code-frame:hover {
 .delete:active,
 .modal-close:active {
   background-color: rgba(10, 10, 10, 0.4);
+}
+
+.delete:hover::after,
+.delete:hover::before {
+  background-color: var(--code-collab-primary-color);
 }
 
 .is-small.delete,
@@ -151,26 +175,22 @@ iframe#code-frame:hover {
 .modal-card-head,
 .modal-card-foot {
   align-items: center;
-  background-color: whitesmoke;
+  align-content: center;
   display: flex;
   flex-shrink: 0;
   justify-content: flex-start;
-  /* padding: 20px; */
   padding: 3px 10px;
   position: relative;
 }
 
-.modal-card-head {
-  border-bottom: 1px solid #dbdbdb;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
 .modal-card-title {
-  color: #363636;
+  font-size: small;
+  font-weight: lighter;
+  /* color: #141414; */
+  color: var(--code-collab-secondary-color);
+  margin: 0;
   flex-grow: 1;
   flex-shrink: 0;
-  /* font-size: 1.5rem; */
   line-height: 1;
 }
 
