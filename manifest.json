@@ -1,0 +1,16 @@
+{
+  "name": "codeCollab Extension",
+  "version": "2.0",
+  "icons": {
+    "16": "favicon-16x16.png",
+    "32": "favicon-32x32.png"
+  },
+  "description": "Support extension for codeCollab.",
+  "manifest_version": 2,
+  "web_accessible_resources": ["content-style.css"],
+  "permissions": ["activeTab", "scripting"],
+  "background": { "scripts": ["background.js"] },
+  "browser_action": {
+    "default_title": "code-collab"
+  }
+}
