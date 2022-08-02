@@ -1,5 +1,5 @@
-function dragElement(elmnt) {
-  var pos1 = 0,
+function dragElement(elmnt, iframe) {
+  let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
@@ -44,15 +44,34 @@ function dragElement(elmnt) {
   }
 }
 
-let div = document.createElement("div");
-div.id = "code-collab";
-let move = document.createElement("span");
-move.id = "code-collab-header";
-move.innerText = "codeCollab";
-div.appendChild(move);
-let iframe = document.createElement("iframe");
-iframe.id = "code-frame";
-iframe.src = "https://code-collab.vercel.app/embed/min";
-div.appendChild(iframe);
-document.body.appendChild(div);
-dragElement(div);
+function addBox() {
+  let div = document.createElement("div");
+  div.id = "code-collab";
+  let move = document.createElement("header");
+  move.id = "code-collab-header";
+  move.classList.add("modal-card-head");
+  move.innerHTML = "<p class='modal-card-title'>codeCollab</p>";
+  let closeBtn = document.createElement("button");
+  closeBtn.classList.add("delete");
+  closeBtn.id = "code-collab-delete";
+  closeBtn.ariaLabel = "close";
+  move.appendChild(closeBtn);
+  div.appendChild(move);
+  let iframe = document.createElement("iframe");
+  iframe.id = "code-frame";
+  iframe.src = "https://code-collab.vercel.app/embed/min";
+  div.appendChild(iframe);
+  document.body.appendChild(div);
+  dragElement(div, iframe);
+
+  // Add an eventlistener to closeBtn to remove the div (#code-collab)
+  closeBtn.addEventListener("click", () => {
+    document.body.removeChild(div);
+  });
+}
+
+if (document.getElementById("code-collab")) {
+  document.getElementById("code-collab").remove();
+} else {
+  addBox();
+}
