@@ -50,11 +50,13 @@ function addBox() {
   let move = document.createElement("header");
   move.id = "code-collab-header";
   move.classList.add("modal-card-head");
-  move.innerHTML = "<p class='modal-card-title'>codeCollab</p>";
+  move.innerHTML =
+    "<p class='modal-card-title'><a href='https://code-collab.vercel.app' class='invis-link' target='_blank' title='open codeCollab in a new tab'>codeCollab</a></p>";
   let closeBtn = document.createElement("button");
   closeBtn.classList.add("delete");
   closeBtn.id = "code-collab-delete";
   closeBtn.ariaLabel = "close";
+  closeBtn.title = "close";
   move.appendChild(closeBtn);
   div.appendChild(move);
   let iframe = document.createElement("iframe");
